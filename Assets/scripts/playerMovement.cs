@@ -5,29 +5,31 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public float velocidad = 5f;
-    public Transform body;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // desplazamiento y animacion horizontal
         float h = Input.GetAxis("Horizontal");
-        //girar el personaje
-        float direccion = body.localScale.x;
-        if (h < 0)
+        
+        float velocidadX = h * Time.deltaTime * velocidad;
+
+        animator.SetFloat("move", velocidadX*velocidad);
+
+        if (velocidadX < 0)
         {
-            direccion = Mathf.Abs(body.localScale.x) * -1;
+            transform.localScale = new Vector3(-4, 4, 1);
         }
-        else if (h > 0)
+        if (velocidadX > 0)
         {
-            direccion = Mathf.Abs(body.localScale.x);
+            transform.localScale = new Vector3(4, 4, 1);
         }
 
-        float velocidadX = h * Time.deltaTime * velocidad;
         Vector3 position = transform.position;
         transform.position = new Vector3(velocidadX + position.x, position.y,position.z);
         
