@@ -678,6 +678,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 5
+  fuerzaSalto: 6
+  longitudRCast: 0.86
+  capaPiso:
+    serializedVersion: 2
+    m_Bits: 8
   animator: {fileID: 621046086}
 --- !u!95 &621046086
 Animator:
@@ -714,7 +719,7 @@ GameObject:
   - component: {fileID: 1144208952}
   - component: {fileID: 1144208951}
   - component: {fileID: 1144208950}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
