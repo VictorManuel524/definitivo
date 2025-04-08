@@ -2022,6 +2022,9 @@ MonoBehaviour:
 =======
   fuerzaSalto: 6
   fuerzaRebote: 10
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   longitudRCast: 0.86
   capaPiso:
@@ -18038,6 +18041,7 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1265967945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19863,6 +19867,8 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 421fe195e085f0c47b82d0ffa8ec6091, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1576000055
 GameObject:
   m_ObjectHideFlags: 0
@@ -20137,6 +20143,9 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1993238301
 GameObject:
@@ -43569,6 +43578,7 @@ SceneRoots:
   - {fileID: 1240833712}
   - {fileID: 621046082}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 1313435490}
   - {fileID: 235725161}
   - {fileID: 1150788237}
@@ -43658,6 +43668,9 @@ SceneRoots:
   - {fileID: 1047498385}
   - {fileID: 353181739}
   - {fileID: 1034419392}
+=======
+  - {fileID: 1791726806}
+>>>>>>> Stashed changes
 =======
   - {fileID: 1791726806}
 >>>>>>> Stashed changes
