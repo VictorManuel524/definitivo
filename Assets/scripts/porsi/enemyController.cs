@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyController : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius = 5f;
@@ -66,7 +66,7 @@ public class enemyController : MonoBehaviour
             movement = Vector2.zero;
             moveAnim = false;
         }
-        if (!recibeDaniov)
+        if(!recibeDaniov)
             rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
         animator.SetBool("move", moveAnim);
     }
