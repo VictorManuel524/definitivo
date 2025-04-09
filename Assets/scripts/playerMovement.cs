@@ -81,7 +81,7 @@ public class playerMovement : MonoBehaviour
         }
 
         Vector3 position = transform.position;
-        transform.position = new Vector3(velocidadX + position.x, position.y, position.z);
+        //transform.position = new Vector3(velocidadX + position.x, position.y, position.z);
 
         //personaje no se puede mover por danio
         if (!recibeDaniov)
