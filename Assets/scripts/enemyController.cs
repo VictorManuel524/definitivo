@@ -139,7 +139,6 @@ public class enemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         recibeDaniov = false;
-        rb.velocity = Vector2.zero;
     }
 
 }
