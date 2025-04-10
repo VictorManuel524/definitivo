@@ -28,7 +28,7 @@ public class playerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {//verifica si esta muerto y no deja realizar acciones
+    {
         if (!muerto)
         {
             if (!atacandov)
@@ -37,8 +37,9 @@ public class playerMovement : MonoBehaviour
                 salto();
             }
             ataque();
+            animaciones();
         }
-        animaciones();
+        
     }
     //mecanica de danio
     public void recibeDanio(Vector2 direccion,int cantDamage)
@@ -52,7 +53,7 @@ public class playerMovement : MonoBehaviour
                 muerto = true;
             }
             if(!muerto)
-            {// no debe recibir mas danio cuando este muerto
+            {
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
             }
@@ -128,8 +129,6 @@ public class playerMovement : MonoBehaviour
         animator.SetBool("recibeDanio", recibeDaniov);
 
         animator.SetBool("atak", atacandov);
-
-        animator.SetBool("muerto", muerto);
     }
 
     //figuras imaginarias solo se ven en el editor
