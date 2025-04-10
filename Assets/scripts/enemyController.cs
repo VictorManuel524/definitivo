@@ -105,7 +105,6 @@ public class enemyController : MonoBehaviour
     public void DesactivaDanio()
     {
         recibeDaniov = false;
-        rb.velocity = Vector2.zero;
     }
 
 }
