@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+    public int vida = 5;
     public float velocidad = 5f;
-
     public float fuerzaSalto = 6f;
     public float fuerzaRebote = 4f;
     public float longitudRCast = 0.86f;
     public LayerMask capaPiso;
 
+    public bool muerto;
     private bool enPiso;
     private bool recibeDaniov;
     private bool atacandov;
@@ -28,13 +29,16 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!atacandov)
+        if (!muerto)
         {
-            movimiento();
-            salto();
+            if (!atacandov)
+            {
+                movimiento();
+                salto();
+            }
+            ataque();
+            animaciones();
         }
-        ataque();
-        animaciones();
         
     }
     //mecanica de danio
@@ -43,8 +47,17 @@ public class playerMovement : MonoBehaviour
         if(!recibeDaniov)
         {
             recibeDaniov = true;
-            Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
-            rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            vida -= cantDamage;
+            if (vida<=0)
+            {
+                muerto = true;
+            }
+            if(!muerto)
+            {
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            }
+            
         }
     }
 
