@@ -6,20 +6,20 @@ public class enemyController : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius = 5f;
-    public float speed = 6f;
+    public float speed = 12.5f;
     private bool recibeDaniov;
 
     private Rigidbody2D rb;
     private Vector2 movement;
     
     private bool moveAnim;
-    public float fuerzaRebote = 6f;
+    public float fuerzaRebote = 4f;
     public Animator animator;
-    //private bool playerVivo;
+    private bool playerVivo;
     // Start is called before the first frame update
     void Start()
     {
-        //playerVivo = true;
+        playerVivo = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -27,7 +27,12 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movimiento();
+        if (playerVivo)
+        {
+            Movimiento();
+        }
+        animator.SetBool("move", moveAnim);
+        animator.SetBool("recibeDano", recibeDaniov);
     }
 
     private void Movimiento()
@@ -54,10 +59,8 @@ public class enemyController : MonoBehaviour
             movement = Vector2.zero;
             moveAnim = false;
         }
-        //if (!recibeDaniov)
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-        
-        animator.SetBool("move", moveAnim);
+        if (!recibeDaniov)
+            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);        
     }
 
     //usamos la funcion del player 
@@ -68,12 +71,12 @@ public class enemyController : MonoBehaviour
             Vector2 direccionDanio = new Vector2(transform.position.x, 0);
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
             playerScript.recibeDanio(direccionDanio, 1);
-            
-            //playerVivo = !playerScript.muerto;
-            //if (!player)
-            //{
-               
-            //}
+
+            playerVivo = !playerScript.muerto;
+            if (!playerVivo)
+            {
+                moveAnim = false;
+            }
         }
     }
     //dibuja el radio de deteccion del enemigo
@@ -97,15 +100,12 @@ public class enemyController : MonoBehaviour
             recibeDaniov = true;
             Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
             rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
-            animator.SetBool("RecibeDano", recibeDaniov);
-            StartCoroutine(desactivaDanio());
         }
     }
-    //co rutina
-    IEnumerator desactivaDanio()
+    public void DesactivaDanio()
     {
-        yield return new WaitForSeconds(0.2f);
         recibeDaniov = false;
+        rb.velocity = Vector2.zero;
     }
 
 }
