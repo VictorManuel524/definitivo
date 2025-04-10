@@ -7,10 +7,11 @@ public class enemyController : MonoBehaviour
     public Transform player;
     public float detectionRadius = 5f;
     public float speed = 6f;
+    private bool recibeDaniov;
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    private bool recibeDaniov;
+    
     private bool moveAnim;
     public float fuerzaRebote = 6f;
     private Animator animator;
@@ -76,16 +77,18 @@ public class enemyController : MonoBehaviour
         if (collision.CompareTag("espada"))
         {
             Vector2 direccionDanio = new Vector2(collision.gameObject.transform.position.x, 0);
-            recibeDanio(direccionDanio, 1);
-        }
+            RecibeDanio(direccionDanio, 1);
+        } 
     }
-    public void recibeDanio(Vector2 direccion, int cantDamage)
+    public void RecibeDanio(Vector2 direccion, int cantDamage)
     {
         if (!recibeDaniov)
         {
             recibeDaniov = true;
             Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
             rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            animator.SetBool("recibeDano", recibeDaniov);
+
         }
     }
 
