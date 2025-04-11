@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyController : MonoBehaviour
+public class enemigo1 : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius = 5f;
@@ -63,7 +63,7 @@ public class enemyController : MonoBehaviour
             moveAnim = false;
         }
         if (!recibeDaniov)
-            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);        
+            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
     }
 
     //usamos la funcion del player 
@@ -94,7 +94,7 @@ public class enemyController : MonoBehaviour
         {
             Vector2 direccionDanio = new Vector2(collision.gameObject.transform.position.x, 0);
             RecibeDanio(direccionDanio, 1);
-        } 
+        }
     }
     public void RecibeDanio(Vector2 direccion, int cantDamage)
     {
@@ -102,7 +102,7 @@ public class enemyController : MonoBehaviour
         {
             vida -= cantDamage;
             recibeDaniov = true;
-            if(vida<= 0)
+            if (vida <= 0)
             {
                 muerto = true;
                 moveAnim = false;
