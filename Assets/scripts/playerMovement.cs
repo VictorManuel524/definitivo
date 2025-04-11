@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+    public AudioManager audioManager;
     public int vida = 5;
     public float velocidad = 5f;
     public float fuerzaSalto = 6f;

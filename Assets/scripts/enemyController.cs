@@ -49,11 +49,11 @@ public class enemyController : MonoBehaviour
 
             if (direccion.x < 0)
             {
-                transform.localScale = new Vector3(-3.5f, 3.5f, 1);
+                transform.localScale = new Vector3(-10f, 10f, 1);
             }
             if (direccion.x > 0)
             {
-                transform.localScale = new Vector3(3.5f, 3.5f, 1);
+                transform.localScale = new Vector3(10f, 10f, 1);
             }
 
             movement = new Vector2(direccion.x, 0);
