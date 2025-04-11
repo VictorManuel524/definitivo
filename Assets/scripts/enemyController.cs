@@ -6,18 +6,19 @@ public class enemyController : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius = 5f;
-    public float speed = 12.5f;
+    public float speed = 26f;
     private bool recibeDaniov;
-    public int vida = 10;
 
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    private bool muerto;
     private bool moveAnim;
     public float fuerzaRebote = 4f;
     public Animator animator;
     private bool playerVivo;
+    private bool muerto;
+    public int vida = 5;
+    private bool ataque;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +34,10 @@ public class enemyController : MonoBehaviour
         {
             Movimiento();
         }
-        animator.SetBool("muerto", muerto);
         animator.SetBool("move", moveAnim);
         animator.SetBool("recibeDano", recibeDaniov);
+        animator.SetBool("muerto", muerto);
+        animator.SetBool("ataque", ataque);
     }
 
     private void Movimiento()
@@ -63,7 +65,7 @@ public class enemyController : MonoBehaviour
             moveAnim = false;
         }
         if (!recibeDaniov)
-            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);        
+            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
     }
 
     //usamos la funcion del player 
@@ -71,10 +73,10 @@ public class enemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            ataque = true;
             Vector2 direccionDanio = new Vector2(transform.position.x, 0);
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
             playerScript.recibeDanio(direccionDanio, 1);
-
             playerVivo = !playerScript.muerto;
             if (!playerVivo)
             {
@@ -94,7 +96,7 @@ public class enemyController : MonoBehaviour
         {
             Vector2 direccionDanio = new Vector2(collision.gameObject.transform.position.x, 0);
             RecibeDanio(direccionDanio, 1);
-        } 
+        }
     }
     public void RecibeDanio(Vector2 direccion, int cantDamage)
     {
@@ -102,7 +104,7 @@ public class enemyController : MonoBehaviour
         {
             vida -= cantDamage;
             recibeDaniov = true;
-            if(vida<= 0)
+            if (vida <= 0)
             {
                 muerto = true;
                 moveAnim = false;
@@ -117,6 +119,11 @@ public class enemyController : MonoBehaviour
     public void DesactivaDanio()
     {
         recibeDaniov = false;
+        rb.velocity = Vector2.zero;
+    }
+    public void DesactivaAtak()
+    {
+        ataque = false;
     }
 
 }

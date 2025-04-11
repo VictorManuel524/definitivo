@@ -6,18 +6,19 @@ public class enemigo3 : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius = 5f;
-    public float speed = 12.5f;
+    public float speed = 20f;
     private bool recibeDaniov;
-    public int vida = 10;
 
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    private bool muerto;
     private bool moveAnim;
     public float fuerzaRebote = 4f;
     public Animator animator;
     private bool playerVivo;
+    private bool muerto;
+    public int vida = 5;
+    private bool ataque;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +34,10 @@ public class enemigo3 : MonoBehaviour
         {
             Movimiento();
         }
-        animator.SetBool("muerto", muerto);
         animator.SetBool("move", moveAnim);
         animator.SetBool("recibeDano", recibeDaniov);
+        animator.SetBool("muerto", muerto);
+        animator.SetBool("ataque", ataque);
     }
 
     private void Movimiento()
@@ -71,6 +73,7 @@ public class enemigo3 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            ataque = true;
             Vector2 direccionDanio = new Vector2(transform.position.x, 0);
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
             playerScript.recibeDanio(direccionDanio, 1);
@@ -117,6 +120,12 @@ public class enemigo3 : MonoBehaviour
     public void DesactivaDanio()
     {
         recibeDaniov = false;
+        rb.velocity = Vector2.zero;
     }
+    public void DesactivaAtak()
+    {
+        ataque = false;
+    }
+
 
 }
