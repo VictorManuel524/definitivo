@@ -20,8 +20,6 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0
-      value: {fileID: -1024806854, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
     - time: 0.33333334
       value: {fileID: -57976181, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
     - time: 0.6666667
@@ -50,7 +48,6 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1024806854, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
     - {fileID: -57976181, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
     - {fileID: -103843627, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
     - {fileID: -1005232947, guid: 1f7079e456ecd2d448d8225fb250ee01, type: 3}
@@ -78,4 +75,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: DesactivaDanio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
