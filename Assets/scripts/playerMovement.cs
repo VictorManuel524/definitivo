@@ -75,6 +75,7 @@ public class playerMovement : MonoBehaviour
         atacandov = false;
     }
 
+
     public void movimiento()
     {
         // desplazamiento y animacion horizontal
