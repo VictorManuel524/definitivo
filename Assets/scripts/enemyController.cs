@@ -14,7 +14,7 @@ public class enemyController : MonoBehaviour
     
     private bool moveAnim;
     public float fuerzaRebote = 6f;
-    private Animator animator;
+    public Animator animator;
     private bool playerVivo;
     // Start is called before the first frame update
     void Start()
@@ -130,15 +130,12 @@ public class enemyController : MonoBehaviour
             recibeDaniov = true;
             Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.8f).normalized;
             rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
-            animator.SetBool("recibeDano", recibeDaniov);
-
         }
+        animator.SetBool("recibeDano", recibeDaniov);
     }
 
-    IEnumerator desactivaDanio()
+    public void DesactivaDanio()
     {
-        yield return new WaitForSeconds(0.4f);
         recibeDaniov = false;
     }
-
 }
