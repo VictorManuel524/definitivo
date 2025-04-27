@@ -8,6 +8,7 @@ public class enemigo2 : MonoBehaviour
     public float detectionRadius = 5f;
     public float speed = 25f;
     private bool recibeDaniov;
+    public AudioClip sonidoAtaque3;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -73,6 +74,7 @@ public class enemigo2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.ReproducirSonido(sonidoAtaque3);
             ataque = true;
             Vector2 direccionDanio = new Vector2(transform.position.x, 0);
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();

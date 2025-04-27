@@ -5,6 +5,7 @@ using UnityEngine;
 public class vidas : MonoBehaviour
 {
     int vida = 1;
+    public AudioClip sonidoVida;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class vidas : MonoBehaviour
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
             playerScript.curar(vida);
             Destroy(this.gameObject);
+            AudioManager.Instance.ReproducirSonido(sonidoVida);
         }
     }
 }

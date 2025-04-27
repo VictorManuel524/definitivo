@@ -6,13 +6,15 @@ using UnityEngine;
 public class Moneda : MonoBehaviour
 {
     public int valor = 1;
-    public gameManager gameManager; 
+    public gameManager gameManager;
+    public AudioClip sonidoMoneda;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             gameManager.SumarPuntos(valor);
             Destroy(this.gameObject);
+            AudioManager.Instance.ReproducirSonido(sonidoMoneda);
         }
     }
 }

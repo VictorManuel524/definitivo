@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29e03e32ce2d91419303eb8a1cdbfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valor: 1
+  gameManager: {fileID: 0}
+  sonidoMoneda: {fileID: 8300000, guid: 8ffd317ad5e76d24cbc7a433919b6353, type: 3}
 --- !u!58 &8533949933803675977
 CircleCollider2D:
   m_ObjectHideFlags: 0

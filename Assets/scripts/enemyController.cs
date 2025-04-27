@@ -8,6 +8,7 @@ public class enemyController : MonoBehaviour
     public float detectionRadius = 5f;
     public float speed = 26f;
     private bool recibeDaniov;
+    public AudioClip sonidoAtaque2;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -69,10 +70,12 @@ public class enemyController : MonoBehaviour
     }
 
     //usamos la funcion del player 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.ReproducirSonido(sonidoAtaque2);
             ataque = true;
             Vector2 direccionDanio = new Vector2(transform.position.x, 0);
             playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
@@ -125,5 +128,4 @@ public class enemyController : MonoBehaviour
     {
         ataque = false;
     }
-
 }

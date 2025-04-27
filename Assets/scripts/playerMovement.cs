@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public AudioManager audioManager;
+    public AudioClip sonidoSalto;
+    public AudioClip sonidoAtaque;
     public int vida = 5;
     public float velocidad = 5f;
     public float fuerzaSalto = 6f;
@@ -110,6 +111,7 @@ public class playerMovement : MonoBehaviour
         if (enPiso && Input.GetKeyDown(KeyCode.Space) && !recibeDaniov)
         {
             rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+            AudioManager.Instance.ReproducirSonido(sonidoSalto);
         }
     }
 
@@ -119,6 +121,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && !atacandov && enPiso)
         {
             atacando();
+            AudioManager.Instance.ReproducirSonido(sonidoAtaque);
         }
     }
 
@@ -152,4 +155,6 @@ public class playerMovement : MonoBehaviour
         }
     }
 }
+
+
 

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb83c3e25d2ab648bb52062a17c4179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoVida: {fileID: 0}
 --- !u!212 &1411102655416232865
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb83c3e25d2ab648bb52062a17c4179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoVida: {fileID: 8300000, guid: 11f062ae2a8c3f04e8545f75d89480d4, type: 3}
 --- !u!58 &-1171831317681168015
 CircleCollider2D:
   m_ObjectHideFlags: 0
