@@ -118,7 +118,7 @@ public class playerMovement : MonoBehaviour
     public void ataque()
     {
         //ataque
-        if (Input.GetKeyDown(KeyCode.Z) && !atacandov && enPiso)
+        if (Input.GetKeyDown(KeyCode.M) && !atacandov && enPiso)
         {
             atacando();
             AudioManager.Instance.ReproducirSonido(sonidoAtaque);
